@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name">AJS</string>
+    <string name="str_no">No</string>
+    <string name="str_yes">Yes</string>
+    <string name="str_please_wait">Please wait...</string>
+    <string name="str_no_internet_connection_available">No internet connection available</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_log_in">LogIn</string>
+    <string name="hint_username">User Name</string>
+    <string name="hint_password">Password</string>
+    <string name="str_forgot_password"><u>Forget Password?</u></string>
+    <string name="btn_login">Login</string>
+    <string name="str_reg_account">Register Here</string>
+    <string name="str_no_account">Don\'t have account yet?</string>
+    <string name="str_email_id">Email ID</string>
+    <string name="str_full_name">Full Name</string>
+    <string name="str_phone_number">Phone Number</string>
+    <string name="str_userName">Username</string>
+    <string name="str_password">Password</string>
+    <string name="btn_signUp">sign up</string>
+    <string name="str_last_name">Last Name</string>
+    <string name="str_frist_name">Frist Name</string>
+    <string name="str_company_name">Company Name</string>
+    <string name="str_my_profile">My Profile</string>
+    <string name="str_balance">Balance</string>
+    <string name="str_request_tender">Request Tender</string>
+    <string name="str_signout">LOG OUT</string>
+    <string name="str_search">Search</string>
+    <string name="str_personal_info">Personal Information</string>
+    <string name="str_profile_info">Profile Info</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="str_email_address">Email Address</string>
+    <string name="str_success">Check Your Email Address</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="str_setting">Setting</string>
+    <string name="str_download_pdf">Download PDF</string>
+    <string name="str_download_file">File Download</string>
+    <string name="str_insert_tenderno">Tender No</string>
+    <string name="btn_submit">Submit</string>
+    <string name="str_about_us">AJS is promoted by experience people to provide personalized, well-structured, professional services in areas of Solar Tending, Company related activities, Fund Raising And other such consulting areas.
+
+        At present, AJS focuses on Solar Tending across India. AJS strives to transform Solar Tendering process from tedious, lengthy and complicated to Easy, Simple, Efficient And Cheerful journey.
+
+        AJS provides solar Tenders info across India to start with. AJS works hard in background to provide a wonderful Tendering experience to its clients by helping at each And every stage from beginning to bidding process.
+
+        Further, AJS provides personalized services to increase business opportunities by man folds and reach a new height with help from JV and business tie-ups.
+
+        Feel free to write us on info@ajscorpsol.com or call us on (1) +91 99099-28476 (2) +91 96013-66698 during 10 AM to 6 PM on working days.\"</string>
+    <string name="str_file_date">Date Of File</string>
+    <string name="str_select_date">Select Date For File</string>
+</resources>

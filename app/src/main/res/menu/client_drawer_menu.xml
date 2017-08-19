@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_myProfile"
+            android:icon="@drawable/img_edit_profile"
+            android:title="@string/str_my_profile" />
+
+
+        <!--<item-->
+            <!--android:id="@+id/nav_notification"-->
+            <!--android:title="@string/str_review_rating" />-->
+
+        <item
+            android:id="@+id/nav_terms_of_use"
+            android:icon="@drawable/img_balance"
+            android:title="@string/str_balance" />
+
+
+        <item
+            android:id="@+id/nav_packages"
+            android:icon="@drawable/request_tender"
+            android:title="@string/str_request_tender" />
+
+        <!--<item-->
+
+            <!--android:id="@+id/nav_howItWorks"-->
+            <!--android:title="@string/str_payments" />-->
+
+    </group>
+
+    <!--<group-->
+        <!--android:id="@+id/menu_bottom"-->
+        <!--android:checkableBehavior="none">-->
+        <!--<item-->
+            <!--android:id="@+id/action_cart"-->
+            <!--android:actionLayout="@layout/activity_nav_item_settings"-->
+            <!--android:title="Settings" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_app_feedback"-->
+            <!--android:title="@string/str_app_feedback" />-->
+    <!--</group>-->
+
+    <item
+        android:id="@+id/nav_signout"
+        android:icon="@drawable/img_logout"
+        android:title="@string/str_signout" />
+
+</menu>
