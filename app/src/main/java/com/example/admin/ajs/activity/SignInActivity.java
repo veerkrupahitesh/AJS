@@ -56,8 +56,6 @@ public class SignInActivity extends AppCompatActivity implements OnClickEvent, D
 
         init();
       //  dataObserver = this;
-
-
     }
 
     public void init() {

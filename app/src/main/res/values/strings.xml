@@ -119,4 +119,11 @@
         Feel free to write us on info@ajscorpsol.com or call us on (1) +91 99099-28476 (2) +91 96013-66698 during 10 AM to 6 PM on working days.\"</string>
     <string name="str_file_date">Date Of File</string>
     <string name="str_select_date">Select Date For File</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_bottom_navigation">BottomNavigation</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
