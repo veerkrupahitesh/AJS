@@ -47,7 +47,7 @@ public class SignInActivity extends AppCompatActivity implements OnClickEvent, D
     private String username, password;
     TextView txvForgotPassword;
     LinearLayout Register_account;
-    private DataObserver dataObserver;
+    //private DataObserver dataObserver;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class SignInActivity extends AppCompatActivity implements OnClickEvent, D
         setContentView(R.layout.activity_sign_in);
 
         init();
-        dataObserver = this;
+      //  dataObserver = this;
 
 
     }
