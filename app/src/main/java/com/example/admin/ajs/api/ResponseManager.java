@@ -2,8 +2,10 @@ package com.example.admin.ajs.api;
 
 
 import com.example.admin.ajs.helper.PrefHelper;
+import com.example.admin.ajs.model.FileModel;
 import com.example.admin.ajs.utility.Utils;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 import org.json.JSONException;
@@ -55,6 +57,16 @@ public class ResponseManager {
                 case ClientChangePassword:
                     object = jsonObject.getJSONObject("ChatUserInsert").toString();
                     break;
+
+
+                case GetFileInfo:
+
+                    object = mGson.fromJson(jsonObject.getJSONArray("GetFileInfo").getJSONObject(0).toString(), mRequestCode.getLocalClass());
+                    break;
+
+                    //object = mGson.fromJson(jsonObject.getJSONArray("GetCategory").toString(), mRequestCode.getLocalClass());
+
+
 
             }
 

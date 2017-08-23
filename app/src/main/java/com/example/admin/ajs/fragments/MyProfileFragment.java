@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.example.admin.ajs.MyApplication;
 import com.example.admin.ajs.R;
+import com.example.admin.ajs.activity.HomeActivity;
 import com.example.admin.ajs.activity.ProfileActivity;
 import com.example.admin.ajs.api.ApiList;
 import com.example.admin.ajs.api.DataObserver;
@@ -27,10 +28,7 @@ import com.example.admin.ajs.helper.PrefHelper;
 import com.example.admin.ajs.helper.ToastHelper;
 import com.example.admin.ajs.listener.OnBackPressedEvent;
 import com.example.admin.ajs.listener.OnClickEvent;
-import com.example.admin.ajs.model.CityModel;
-import com.example.admin.ajs.model.CountryModel;
 import com.example.admin.ajs.model.LoginUserModel;
-import com.example.admin.ajs.model.StateModel;
 import com.example.admin.ajs.utility.Utils;
 
 import java.util.ArrayList;
@@ -47,32 +45,20 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
 
 
     private View rootView;
-    private EditText edtFirstName, edtLastName, edtEmail, edtTelephone, edtPostalCode, edtCompanyName;
+    private EditText edtFirstName, edtLastName, edtEmail,edtTelephone, edtPostalCode, edtCompanyName;
     private Button btnsubmit;
     private LoginUserModel loginUserObject;
-    private Spinner spgender;
-    private ImageView imgProfilePhoto, imgBannerPhoto;
-    private TextView tvProfileInfo, tvPersonalInfo, edtCity,
-            edtState, edtCountry;
-    private ProgressBar prgBanner, prgProfile;
+    private TextView tvProfileInfo, tvPersonalInfo;
 
-    private ProfileActivity profileActivity;
-    private List<String> genderList;
-    private ArrayList<CountryModel> countryList;
-    private ArrayList<StateModel> stateList;
-    private ArrayList<CityModel> cityList;
-    private Dialog mDialog;
-    private String countryId = "", stateId = "", cityId = "";
-    private List<String> permissionList;
-    private String image64Base = "";
+    private HomeActivity homeActivity;
 
-    private String firstName, lastName, emailId, companyName, mobileNo, Country, State, City, poBox, password;
+    private String firstName, lastName, emailId,companyName, mobileNo,Country,State,City,poBox,password;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        profileActivity = (ProfileActivity) getActivity();
+        homeActivity = (HomeActivity) getActivity();
         loginUserObject = (LoginUserModel) Utils.stringToObject(PrefHelper.getInstance().getString(PrefHelper.CLIENT_CREDENTIALS, ""));
 
     }
@@ -84,11 +70,11 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
         rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
 
-        tvPersonalInfo = (TextView) rootView.findViewById(R.id.tv_personalInfo);
-        tvPersonalInfo.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
-
-        tvProfileInfo = (TextView) rootView.findViewById(R.id.tv_profileInfo);
-        tvProfileInfo.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
+//        tvPersonalInfo = (TextView) rootView.findViewById(R.id.tv_personalInfo);
+//        tvPersonalInfo.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
+//
+//        tvProfileInfo = (TextView) rootView.findViewById(R.id.tv_profileInfo);
+//        tvProfileInfo.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
 
         edtFirstName = (EditText) rootView.findViewById(R.id.edt_firstName);
         edtFirstName.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
@@ -108,15 +94,6 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
         edtTelephone = (EditText) rootView.findViewById(R.id.edt_telephone);
         edtTelephone.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
 
-        edtCity = (TextView) rootView.findViewById(R.id.edt_city);
-        edtCity.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
-
-        edtState = (TextView) rootView.findViewById(R.id.edt_state);
-        edtState.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
-
-        edtCountry = (TextView) rootView.findViewById(R.id.edt_country);
-        edtCountry.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
-
         edtPostalCode = (EditText) rootView.findViewById(R.id.edt_postalCode);
         edtPostalCode.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
 
@@ -135,7 +112,7 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
     @Override
     public void onBackPressed() {
 
-        profileActivity.popBackFragment();
+        homeActivity.popBackFragment();
     }
 
     @Override
@@ -158,13 +135,13 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
 
             case R.id.img_back_header:
 
-                profileActivity.popBackFragment();
+                homeActivity.popBackFragment();
                 break;
 
 
         }
-    }
 
+    }
     private boolean validateForm() {
 
         firstName = edtFirstName.getText().toString().trim();
@@ -190,16 +167,19 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
 
         } else if (companyName.isEmpty()) {
             edtCompanyName.setError("CompanyName can not be empty");
-            return false;
-        } else if (mobileNo.isEmpty()) {
+        return false;
+        }
+        else if (mobileNo.isEmpty()) {
             edtTelephone.setError("MobileNo can not be empty");
             return false;
 
-        } else if (poBox.isEmpty()) {
+        }
+        else if (poBox.isEmpty()) {
             edtPostalCode.setError("poBox can not be empty");
             return false;
 
-        } else {
+        }
+        else {
 
             return true;
         }
@@ -231,7 +211,7 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
             params.put("op", ApiList.CLIENT_UPDATE);
             params.put("AuthKey", ApiList.AUTH_KEY);
             params.put("ClientId", String.valueOf(loginUserObject.getClientId()));
-            params.put("FirstName", firstName);
+            params.put("FirstName",firstName);
             params.put("LastName", lastName);
             params.put("CompanyName", companyName);
             params.put("Address1", "");
@@ -269,9 +249,7 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
                     edtEmail.setText(loginUserObject.getEmailId());
 //                    edtPassword.setText(loginUserObject.getPassword());
                     edtTelephone.setText(loginUserObject.getMobileNo());
-                    // edtCity.setText(loginUserObject.getCity());
-                    // edtState.setText(loginUserObject.getState());
-                    // edtCountry.setText(loginUserObject.getCountry());
+
                     edtPostalCode.setText(loginUserObject.getPOBox());
 
                 }
@@ -280,11 +258,10 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
             case ClientUpdate:
 
                 ToastHelper.getInstance().showMessage("Profile updated");
-                profileActivity.popBackFragment();
+                homeActivity.popBackFragment();
                 break;
         }
     }
-
     @Override
     public void onFailure(RequestCode mRequestCode, ResponseStatus mResponseStatus) {
         ToastHelper.getInstance().showMessage(mResponseStatus.getError());

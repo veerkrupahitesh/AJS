@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.example.admin.ajs.MyApplication;
 import com.example.admin.ajs.R;
+import com.example.admin.ajs.activity.HomeActivity;
 import com.example.admin.ajs.activity.ProfileActivity;
 import com.example.admin.ajs.api.ApiList;
 import com.example.admin.ajs.api.DataObserver;
@@ -59,12 +60,14 @@ public class ChangePwdFragment extends Fragment implements OnClickEvent, DataObs
     // private int loginUser;
     LoginUserModel loginUserObject;
 
+    private HomeActivity homeActivity;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        profileActivity = (ProfileActivity) getActivity();
+        homeActivity = (HomeActivity) getActivity();
         bundle = getArguments();
         loginUserObject = (LoginUserModel) Utils.stringToObject(PrefHelper.getInstance().getString(PrefHelper.CLIENT_CREDENTIALS, ""));
     }
@@ -96,7 +99,7 @@ public class ChangePwdFragment extends Fragment implements OnClickEvent, DataObs
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Utils.setupOutSideTouchHideKeyboard(rootView);
+       // Utils.setupOutSideTouchHideKeyboard(rootView);
     }
 
 
@@ -107,7 +110,7 @@ public class ChangePwdFragment extends Fragment implements OnClickEvent, DataObs
 
     @Override
     public void onBackPressed() {
-        profileActivity.popBackFragment();
+        homeActivity.popBackFragment();
     }
 
     @Override
@@ -116,7 +119,7 @@ public class ChangePwdFragment extends Fragment implements OnClickEvent, DataObs
         switch (view.getId()) {
 
             case R.id.img_back_header:
-                profileActivity.popBackFragment();
+                homeActivity.popBackFragment();
                 break;
 
             case R.id.btnSave:
@@ -192,7 +195,7 @@ public class ChangePwdFragment extends Fragment implements OnClickEvent, DataObs
             case ClientChangePassword:
 
                 ToastHelper.getInstance().showMessage("PassWord Change Successfully");
-                profileActivity.popBackFragment();
+                homeActivity.popBackFragment();
                 break;
         }
     }

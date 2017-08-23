@@ -21,10 +21,10 @@
     <string name="str_last_name">Last Name</string>
     <string name="str_frist_name">Frist Name</string>
     <string name="str_company_name">Company Name</string>
-    <string name="str_my_profile">My Profile</string>
+    <string name="str_my_profile">Profile</string>
     <string name="str_balance">Balance</string>
     <string name="str_request_tender">Request Tender</string>
-    <string name="str_signout">LOG OUT</string>
+    <string name="str_signout">Logout</string>
     <string name="str_search">Search</string>
     <string name="str_personal_info">Personal Information</string>
     <string name="str_profile_info">Profile Info</string>
@@ -117,7 +117,7 @@
         Further, AJS provides personalized services to increase business opportunities by man folds and reach a new height with help from JV and business tie-ups.
 
         Feel free to write us on info@ajscorpsol.com or call us on (1) +91 99099-28476 (2) +91 96013-66698 during 10 AM to 6 PM on working days.\"</string>
-    <string name="str_file_date">Date Of File</string>
+    <string name="str_file_date">Select File Date</string>
     <string name="str_select_date">Select Date For File</string>
     <string name="title_activity_tab">TabActivity</string>
     <string name="action_settings">Settings</string>
@@ -126,4 +126,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="str_insert_tender">Tender Insert</string>
+    <string name="str_profile">Usre Profile</string>
 </resources>

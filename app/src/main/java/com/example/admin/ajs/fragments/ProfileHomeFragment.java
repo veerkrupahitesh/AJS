@@ -12,17 +12,19 @@ import android.widget.TextView;
 
 import com.example.admin.ajs.MyApplication;
 import com.example.admin.ajs.R;
+import com.example.admin.ajs.activity.HomeActivity;
 import com.example.admin.ajs.activity.ProfileActivity;
 import com.example.admin.ajs.activity.SignInActivity;
 import com.example.admin.ajs.api.DataObserver;
 import com.example.admin.ajs.api.RequestCode;
 import com.example.admin.ajs.api.ResponseStatus;
-import com.example.admin.ajs.enums.RegisterBy;
 import com.example.admin.ajs.helper.PrefHelper;
 import com.example.admin.ajs.listener.OnBackPressedEvent;
 import com.example.admin.ajs.listener.OnClickEvent;
 import com.example.admin.ajs.model.LoginUserModel;
 import com.example.admin.ajs.utility.Utils;
+
+import static com.example.admin.ajs.R.id.tv_changePassword;
 
 
 /**
@@ -36,13 +38,15 @@ public class ProfileHomeFragment extends Fragment implements OnClickEvent, OnBac
     private TextView  tvMyProfile, tvBalance, tvRequestTender, tvSearch, tvSignOut,tvSettings;
 
     private ProfileActivity profileActivity;
+    private HomeActivity homeActivity;
     private LoginUserModel loginUser;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        profileActivity = (ProfileActivity) getActivity();
-       loginUser = (LoginUserModel) Utils.stringToObject(PrefHelper.getInstance().getString(PrefHelper.CLIENT_CREDENTIALS, ""));
+
+        homeActivity = (HomeActivity) getActivity();
+        loginUser = (LoginUserModel) Utils.stringToObject(PrefHelper.getInstance().getString(PrefHelper.CLIENT_CREDENTIALS, ""));
     }
 
     @Nullable
@@ -53,14 +57,11 @@ public class ProfileHomeFragment extends Fragment implements OnClickEvent, OnBac
         tvBalance = (TextView) rootView.findViewById(R.id.tv_balance);
         tvBalance.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
 
-        tvRequestTender = (TextView) rootView.findViewById(R.id.tv_requestTender);
-        tvRequestTender.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
 
 //        tvSearch = (TextView) rootView.findViewById(R.id.tv_search);
 //        tvSearch.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
 
-        tvSettings = (TextView) rootView.findViewById(R.id.tv_settings);
-        tvSettings.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+
 
         tvMyProfile = (TextView) rootView.findViewById(R.id.tv_myProfile);
         tvMyProfile.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
@@ -92,8 +93,8 @@ public class ProfileHomeFragment extends Fragment implements OnClickEvent, OnBac
 
     @Override
     public void onBackPressed() {
+       // homeActivity.popBackFragment();
 
-        profileActivity.popBackFragment();
     }
 
     @Override
@@ -101,36 +102,16 @@ public class ProfileHomeFragment extends Fragment implements OnClickEvent, OnBac
 
         switch (view.getId()) {
 
-            case R.id.img_back_header:
-                profileActivity.popBackFragment();
-                break;
 
             case R.id.tv_myProfile:
 
-                profileActivity.pushFragment(new MyProfileFragment(), true, false, null);
+                homeActivity.pushFragment(new MyProfileFragment(), true, false, null);
                 break;
 
-//            case R.id.tv_balance:
-//
-//                profileActivity.pushFragment(new ReviewRatingFragment(), true, false, null);
-//                break;
-//
-            case R.id.tv_requestTender:
-                profileActivity.pushFragment(new TenderInsertFragment(), true, false, null);
+
+            case  tv_changePassword:
+                homeActivity.pushFragment(new ChangePwdFragment(), true, false, null);
                 break;
-//
-//            case R.id.tv_search:
-//
-//                profileActivity.pushFragment(new PackagesFragment(), true, false, null);
-//
-//                break;
-
-
-            case R.id.tv_settings:
-
-                profileActivity.pushFragment(new SettingFragment(), true, false, null);
-                break;
-
 
             case R.id.tv_signOut:
 
@@ -141,10 +122,10 @@ public class ProfileHomeFragment extends Fragment implements OnClickEvent, OnBac
 //                    if (loginUser.getRegisteredBy().equals(RegisterBy.APP.getRegisterBy())) {
 
                 PrefHelper.getInstance().clearAllPrefs();
-                Intent intent = new Intent(profileActivity, SignInActivity.class);
+                Intent intent = new Intent(homeActivity, SignInActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear the stack of activities
                 startActivity(intent);
-                profileActivity.finish();
+                homeActivity.finish();
 
 //                    } else if (loginUser.getRegisteredBy().equals(RegisterBy.FACEBOOK.getRegisterBy())) {
 //

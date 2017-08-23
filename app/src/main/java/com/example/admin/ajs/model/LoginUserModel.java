@@ -80,6 +80,10 @@ public class LoginUserModel implements Serializable {
     @SerializedName("EndDate")
     @Expose
     private String endDate;
+    @SerializedName("BalanceTender")
+    @Expose
+    private String balanceTender;
+
 
     private final static long serialVersionUID = 7295017410248278913L;
 
@@ -267,4 +271,11 @@ public class LoginUserModel implements Serializable {
         this.endDate = endDate;
     }
 
+    public String getBalanceTender() {
+        return balanceTender;
+    }
+
+    public void setBalanceTender(String balanceTender) {
+        this.balanceTender = balanceTender;
+    }
 }

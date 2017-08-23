@@ -1,24 +1,43 @@
 package com.example.admin.ajs.activity;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.admin.ajs.R;
+import com.example.admin.ajs.fragments.FileDownloadFragment;
 import com.example.admin.ajs.fragments.HomeFragment;
+import com.example.admin.ajs.fragments.MyProfileFragment;
+import com.example.admin.ajs.fragments.ProfileHomeFragment;
+import com.example.admin.ajs.fragments.TenderInsertFragment;
 import com.example.admin.ajs.listener.OnBackPressedEvent;
 import com.example.admin.ajs.listener.OnClickEvent;
-import com.example.admin.ajs.utility.Utils;
+import com.example.admin.ajs.utility.PermissionClass;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,6 +47,13 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity implements OnClickEvent, OnBackPressedEvent/*, NavigationView.OnNavigationItemSelectedListener*/
         , View.OnClickListener {
 
+
+    private static final int EXTERNAL_STORAGE_PERMISSION_CONSTANT = 100;
+    private static final int REQUEST_PERMISSION_SETTING = 101;
+    private boolean sentToSettings = false;
+    private SharedPreferences permissionStatus;
+
+    private static final String TAG = "AJS";
     OnClickEvent onClickEvent;
     OnBackPressedEvent onBackPressedEvent;
 
@@ -44,35 +70,80 @@ public class HomeActivity extends AppCompatActivity implements OnClickEvent, OnB
 
     private Location mLastLocation;
     private ArrayList<String> permission;
-    private float lat, lon, altitude;
+
+
+    //private TextView mTextMessage;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_my_profile:
+                    if (!(currentFragment instanceof ProfileHomeFragment)) {
+                    removeAllFragment();
+                    pushFragment(new ProfileHomeFragment(), true, false, null);
+                    }
+                return true;
+                case R.id.navigation_insert_tender:
+                  //  mTextMessage.setText(R.string.title_dashboard);
+                    if (!(currentFragment instanceof TenderInsertFragment)) {
+                        removeAllFragment();
+                        pushFragment(new TenderInsertFragment(), true, false, null);
+                    }
+                    return true;
+                case R.id.navigation_file_download:
+                   // mTextMessage.setText(R.string.title_notifications);
+                    if (!(currentFragment instanceof FileDownloadFragment)) {
+                        removeAllFragment();
+                        pushFragment(new FileDownloadFragment(), true, false, null);
+                    }
+                    return true;
+            }
+            return false;
+        }
+
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        init();
+        permissionStatus = getSharedPreferences("permissionStatus",MODE_PRIVATE);
 
+
+
+
+        // mTextMessage = (TextView) findViewById(R.id.message);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+       init();
         permission = new ArrayList<>();
         permission.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-        permission.add(Manifest.permission.ACCESS_FINE_LOCATION);
-        permission.add(Manifest.permission.ACCESS_NETWORK_STATE);
+        permission.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        permission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         fragmentManager = getSupportFragmentManager();
 
-        pushFragment(new HomeFragment(), true, false, null);
+        pushFragment(new FileDownloadFragment(), true, false, null);
     }
-
+    private void proceedAfterPermission() {
+        //We've got the permission, now we can proceed further
+        Toast.makeText(getBaseContext(), "We got the Storage Permission", Toast.LENGTH_LONG).show();
+    }
     private void init() {
 
-        linMyProfile = (LinearLayout) findViewById(R.id.lin_my_profile);
-        linMyProfile.setOnClickListener(this);
-        linTenderInsert = (LinearLayout) findViewById(R.id.lin_tender_insert);
-        linTenderInsert.setOnClickListener(this);
-        linRequestTender = (LinearLayout) findViewById(R.id.lin_download_file);
-        linRequestTender.setOnClickListener(this);
-        linsetting = (LinearLayout) findViewById(R.id.lin_setting);
-        linsetting.setOnClickListener(this);
+//        linMyProfile = (LinearLayout) findViewById(R.id.lin_my_profile);
+//        linMyProfile.setOnClickListener(this);
+//        linTenderInsert = (LinearLayout) findViewById(R.id.lin_tender_insert);
+//        linTenderInsert.setOnClickListener(this);
+//        linRequestTender = (LinearLayout) findViewById(R.id.lin_download_file);
+//        linRequestTender.setOnClickListener(this);
+//        linsetting = (LinearLayout) findViewById(R.id.lin_setting);
+//        linsetting.setOnClickListener(this);
 
     }
 
@@ -82,37 +153,10 @@ public class HomeActivity extends AppCompatActivity implements OnClickEvent, OnB
         onClickEvent.onClick(view);
         switch (view.getId()) {
 
-            //case R.id.img_helpMe:
+        //  case R.id.btn_file_download:
 
-//                Utils.buttonClickEffect(view);
-//                if (!(currentFragment instanceof ProfileHomeFragment)) {
-//                    removeAllFragment();
-//                    bundle = new Bundle();
-//                    bundle.putInt(Constants.IS_FROM_HOME_ACTIVITY, 0);
-//                    pushFragment(new ProfileHomeFragment(), true, false, bundle);
-            //}
 
-            // break;
 
-           /* case R.id.img_back_header:
-                Utils.buttonClickEffect(view);
-                if (drawer != null) {
-                    if (!drawer.isDrawerOpen(GravityCompat.START)) {
-                        drawer.openDrawer(GravityCompat.START);
-                    }
-                }
-                break;*/
-
-//            case R.id.lin_home:
-//                Utils.buttonClickEffect(view);
-//                if (!(currentFragment instanceof HomeFragment)) {
-//                    removeAllFragment();
-//                    pushFragment(new HomeFragment(), true, false, null);
-//                }
-//                break;
-//
-//            case R.id.lin_fab_search:
-//
 //                Utils.buttonClickEffect(view);
 //                if (!(currentFragment instanceof SearchFragment)) {
 //                    removeAllFragment();
@@ -126,21 +170,6 @@ public class HomeActivity extends AppCompatActivity implements OnClickEvent, OnB
 //                Intent intent1 = new Intent(this, MainActivity.class);
 //                startActivity(intent1);
 //                break;
-
-            case R.id.lin_download_file:
-
-                Utils.buttonClickEffect(view);
-                Intent intent = new Intent(this, FileDownloadActivity.class);
-                startActivity(intent);
-                break;
-
-            case R.id.lin_my_profile:
-                Utils.buttonClickEffect(view);
-                //imgUserProfile.setEnabled(false);
-                intent = new Intent(this, ProfileActivity.class);
-                startActivity(intent);
-                break;
-
         }
     }
 
@@ -265,6 +294,37 @@ public class HomeActivity extends AppCompatActivity implements OnClickEvent, OnB
             e.printStackTrace();
         }
     }
+
+    public  boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG,"Permission is granted");
+                return true;
+            } else {
+
+                Log.v(TAG,"Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG,"Permission is granted");
+            return true;
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+            Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
+            isStoragePermissionGranted();
+            //resume tasks needing this permission
+        }
+    }
+
 
 
     /**

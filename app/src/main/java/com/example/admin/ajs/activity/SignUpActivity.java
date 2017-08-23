@@ -48,7 +48,8 @@ public class SignUpActivity extends AppCompatActivity implements OnClickEvent,Da
 
 
         init();
-        dataObserver = this;
+       // dataObserver = this;
+        Utils.setupOutSideTouchHideKeyboard(linParentView);
     }
 
     private void init() {
@@ -146,6 +147,7 @@ public class SignUpActivity extends AppCompatActivity implements OnClickEvent,Da
         } else if (mCompanyName.isEmpty()) {
             edtCompanyName.requestFocus();
             edtCompanyName.setError("Enter Company Name");
+            return false;
         } else if (mEmailAddress.isEmpty()) {
             edtEmail.requestFocus();
             edtEmail.setError("Enter email address");
@@ -170,9 +172,9 @@ public class SignUpActivity extends AppCompatActivity implements OnClickEvent,Da
             edtPassword.requestFocus();
             edtPassword.setError("Enter password");
             return false;
-        } else {
+        } else {        return true;
         }
-        return true;
+
     }
 
     public void onSuccess(RequestCode mRequestCode, Object mObject) {

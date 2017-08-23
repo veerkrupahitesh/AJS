@@ -10,11 +10,12 @@
     android:orientation="vertical">
 
     <include layout="@layout/header" />
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:orientation="vertical">
 
@@ -35,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.v7.widget.AppCompatEditText
+                <EditText
                     android:id="@+id/edt_old_pwd"
                     style="@style/editTextStyle"
                     android:layout_width="match_parent"
@@ -51,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.v7.widget.AppCompatEditText
+                <EditText
                     android:id="@+id/edt_new_pwd"
                     style="@style/editTextStyle"
                     android:layout_width="match_parent"
@@ -67,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.v7.widget.AppCompatEditText
+                <EditText
                     android:id="@+id/edt_confirm_pwd"
                     style="@style/editTextStyle"
                     android:layout_width="match_parent"
@@ -87,5 +88,7 @@
                 android:onClick="onClick"
                 android:text="Submit" />
         </LinearLayout>
+
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.admin.ajs.api;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -201,7 +202,8 @@ public class RestClient {
         }*/
     }
 
-    public void post(Context mContext, int mRequestMethod, final Map<String, String> mapParams, /*JSONObject mPostParams,*/ String url, boolean isDialogRequired, final RequestCode mRequestCode, final DataObserver dataObserver) {
+    public void post(Context mContext, int mRequestMethod, final Map<String, String> mapParams, /*JSONObject mPostParams,*/
+    String url, boolean isDialogRequired, final RequestCode mRequestCode, final DataObserver dataObserver) {
 
         try {
             if (Utils.isInternetAvailable()) {
@@ -280,6 +282,7 @@ public class RestClient {
         }
 
     }
+
 
 
 }

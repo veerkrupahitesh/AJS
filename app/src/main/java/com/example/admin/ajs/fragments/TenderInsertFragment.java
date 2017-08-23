@@ -55,7 +55,7 @@ public class TenderInsertFragment extends Fragment implements OnClickEvent, Data
     // object and variable declaration
     private JSONObject params;
     private ProfileActivity profileActivity;
-    private HomeActivity homeActivity;
+    private HomeActivity HomeActivity;
     // private int loginUser;
     LoginUserModel loginUserObject;
 
@@ -67,7 +67,9 @@ public class TenderInsertFragment extends Fragment implements OnClickEvent, Data
         loginUserObject = (LoginUserModel) Utils.stringToObject(PrefHelper.getInstance().getString(PrefHelper.CLIENT_CREDENTIALS, ""));
 
        // homeActivity = (HomeActivity) getActivity();
-        profileActivity = (ProfileActivity) getActivity();
+        //profileActivity = (ProfileActivity) getActivity();
+        HomeActivity = (HomeActivity) getActivity();
+
         bundle = getArguments();
     }
 
@@ -103,7 +105,7 @@ public class TenderInsertFragment extends Fragment implements OnClickEvent, Data
             case TenderInsert:
 
                 ToastHelper.getInstance().showMessage("Tender Insert Successfully");
-                profileActivity.popBackFragment();
+                //HomeActivity.popBackFragment();
                 break;
         }
 
@@ -116,7 +118,7 @@ public class TenderInsertFragment extends Fragment implements OnClickEvent, Data
 
     @Override
     public void onBackPressed() {
-        profileActivity.popBackFragment();
+        HomeActivity.popBackFragment();
     }
 
     @Override
@@ -124,7 +126,7 @@ public class TenderInsertFragment extends Fragment implements OnClickEvent, Data
         switch (view.getId()) {
 
             case R.id.img_back_header:
-                profileActivity.popBackFragment();
+                HomeActivity.popBackFragment();
                 break;
 
             case R.id.btnSave:

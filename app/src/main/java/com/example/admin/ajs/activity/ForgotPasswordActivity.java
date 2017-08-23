@@ -35,9 +35,9 @@ import java.util.Map;
 public class ForgotPasswordActivity extends AppCompatActivity implements OnClickEvent, DataObserver, OnBackPressedEvent {
 
     private Button btnSave;
-    private EditText edtEmail;
+    private EditText editUserName;
     private LinearLayout ParentView;
-    private String email;
+    private String userNmae;
     private ProfileActivity profileActivity;
 
     @Override
@@ -45,8 +45,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_forgot_password);
-        Utils.printFbKeyHash();
         init();
+        Utils.setupOutSideTouchHideKeyboard(findViewById(R.id.parentView));
     }
 
     private void init() {
@@ -62,12 +62,12 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
         }
 
 
-        edtEmail = (EditText) findViewById(R.id.edt_email_address);
-        edtEmail.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+        editUserName = (EditText) findViewById(R.id.edt_userName);
+        editUserName.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
 
-        ParentView = (LinearLayout) findViewById(R.id.parentView);
+        //ParentView = (LinearLayout) findViewById(R.id.parentView);
 
-        Utils.setupOutSideTouchHideKeyboard(ParentView);
+       // Utils.setupOutSideTouchHideKeyboard(ParentView);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
                     //JSONObject params = new JSONObject();
                     params.put("op", ApiList.FORGOT_PASSWORD);
                     params.put("AuthKey", ApiList.AUTH_KEY);
-                    params.put("EmailId", email);
+                    params.put("UserName", userNmae);
 
                     RestClient.getInstance().post(this, Request.Method.POST, params,
                             ApiList.FORGOT_PASSWORD, true, RequestCode.ForgotPassword, this);
@@ -97,19 +97,15 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
     }
 
     private boolean validateLoginForm() {
-        email = edtEmail.getText().toString().trim();
+        userNmae = editUserName.getText().toString().trim();
 
-        if (email.isEmpty()) {
-            edtEmail.requestFocus();
-            edtEmail.setError("Enter email address");
-            return false;
-        } else if (!email.matches(Patterns.EMAIL_ADDRESS.pattern())) {
-            edtEmail.requestFocus();
-            edtEmail.setError("Enter valid email address");
+        if (userNmae.isEmpty()) {
+            editUserName.requestFocus();
+            editUserName.setError("Enter User Name");
             return false;
 
-        } else {
-            return true;
+        } else {return true;
+
         }
     }
 

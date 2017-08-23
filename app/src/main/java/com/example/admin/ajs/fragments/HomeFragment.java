@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment implements OnClickEvent, DataObserver
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        rootView = inflater.inflate(R.layout.fragment_file_download, container, false);
 
         imgUserProfile = (ImageView) rootView.findViewById(R.id.img_userProfile);
         return rootView;
@@ -121,6 +121,7 @@ public class HomeFragment extends Fragment implements OnClickEvent, DataObserver
     public void onFailure(RequestCode mRequestCode, ResponseStatus mResponseStatus) {
         ToastHelper.getInstance().showMessage(mResponseStatus.getError());
     }
+
 
 
 }

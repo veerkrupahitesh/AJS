@@ -22,7 +22,11 @@ public class ProfileActivity extends AppCompatActivity implements OnClickEvent, 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     Fragment currentFragment;
-
+//    private static PayPalConfiguration config = new PayPalConfiguration()
+//            // Start with mock environment.  When ready, switch to sandbox (ENVIRONMENT_SANDBOX)
+//            // or live (ENVIRONMENT_PRODUCTION)
+//            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
+//            .clientId("AQsGc_G-f7kthCZXQeNii8XiE_0iUYWXqPgAVMwc0bfJYS69WtYVMGOOD52aGNH8sKrXaqTgRHcrF_s-");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,12 @@ public class ProfileActivity extends AppCompatActivity implements OnClickEvent, 
         fragmentManager = getSupportFragmentManager();
 
         pushFragment(new ProfileHomeFragment(), true, false, null);
+
+
+
+//        Intent intent = new Intent(this, PayPalService.class);
+//        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+//        startService(intent);
     }
 
     public void pushFragment(Fragment fragment, boolean addToBackStack, boolean shouldAnimate, Bundle bundle) {
@@ -163,7 +173,11 @@ public class ProfileActivity extends AppCompatActivity implements OnClickEvent, 
         }*/
     }
 
-
+//    @Override
+//    public void onDestroy() {
+//        stopService(new Intent(this, PayPalService.class));
+//        super.onDestroy();
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -13,24 +13,24 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_profileInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/str_profile_info"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="13sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_profileInfo"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:text="@string/str_profile_info"-->
+                    <!--android:textColor="@color/colorAccent"-->
+                    <!--android:textSize="13sp" />-->
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_FristName"
                     android:layout_width="match_parent"
@@ -112,14 +112,14 @@
                         <!--android:maxLines="1" />-->
                 <!--</android.support.design.widget.TextInputLayout>-->
 
-                <TextView
-                    android:id="@+id/tv_personalInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/str_personal_info"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="13sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_personalInfo"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:text="@string/str_personal_info"-->
+                    <!--android:textColor="@color/colorAccent"-->
+                    <!--android:textSize="13sp" />-->
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_Telephone"
@@ -138,56 +138,6 @@
                         android:maxLines="1" />
                 </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/edt_country"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/btn_dropdown"
-                    android:gravity="center_vertical"
-                    android:hint="Country"
-                    android:maxLength="20"
-                    android:maxLines="1"
-                    android:onClick="onClick"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:textColor="@color/colorAccent"
-                    android:textColorHint="@color/colorHint" />
-
-                <TextView
-                    android:id="@+id/edt_state"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/btn_dropdown"
-                    android:gravity="center_vertical"
-                    android:hint="State"
-                    android:maxLength="20"
-                    android:maxLines="1"
-                    android:onClick="onClick"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:textColor="@color/colorAccent"
-                    android:textColorHint="@color/colorHint" />
-
-                <TextView
-                    android:id="@+id/edt_city"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/btn_dropdown"
-                    android:gravity="center_vertical"
-                    android:hint="City"
-                    android:maxLength="20"
-                    android:maxLines="1"
-                    android:onClick="onClick"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:textColor="@color/colorAccent"
-                    android:textColorHint="@color/colorHint" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_PosatlCode"

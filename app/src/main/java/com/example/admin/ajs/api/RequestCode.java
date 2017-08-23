@@ -1,6 +1,7 @@
 package com.example.admin.ajs.api;
 
 
+import com.example.admin.ajs.model.FileModel;
 import com.example.admin.ajs.model.LoginUserModel;
 
 /**
@@ -14,7 +15,7 @@ public enum RequestCode {
     ClientUpdate(LoginUserModel.class),
     ClientChangePassword(null),
     TenderInsert(null),
-    GetFileInfo(null),
+    GetFileInfo(FileModel.class),
     ForgotPassword(LoginUserModel.class),
     GetUser(LoginUserModel.class);
 

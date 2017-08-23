@@ -6,18 +6,32 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
 
 import com.example.admin.ajs.MyApplication;
 import com.example.admin.ajs.R;
 import com.example.admin.ajs.enums.CalenderDateSelection;
+import com.example.admin.ajs.helper.ToastHelper;
 import com.example.admin.ajs.utility.Constants;
 import com.example.admin.ajs.utility.Utils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by ${hitesh} on 12/6/2016.
@@ -106,6 +120,125 @@ public class CustomDialog {
         }
     }
 
+    public void showEnterOffer(Context mContext, boolean mIsCancelable,String title) {
+
+        mDialog = new Dialog(mContext, R.style.dialogStyle);
+        //  @SuppressLint("InflateParams")
+        //  View view = LayoutInflater.from(mContext).inflate(R.layout.custom_dialog_alert, null, false);
+        mDialog.setContentView(R.layout.custom_dialog_enter_offer);
+
+         /* Set Dialog width match parent */
+        mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mDialog.getWindow().getAttributes().windowAnimations = R.style.animationdialog;
+        //mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        TextView mDialogTitle = (TextView) mDialog.findViewById(R.id.tv_enter_offer);
+        mDialogTitle.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+        mDialogTitle.setText(title);
+
+        final EditText edtEnterOffer = (EditText) mDialog.findViewById(R.id.edt_enter_offer);
+        //TextView tvOk = (TextView) mDialog.findViewById(R.id.tv_ok);
+        edtEnterOffer.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+
+        Button btnCancel = (Button) mDialog.findViewById(R.id.btn_actionCancel);
+        btnCancel.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+
+        final Button btnOk = (Button) mDialog.findViewById(R.id.btn_actionOk);
+        btnOk.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+        btnOk.setTag(edtEnterOffer.getText().toString().trim());
+
+        edtEnterOffer.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                btnOk.setTag(edtEnterOffer.getText().toString().trim());
+            }
+        });
+
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+        mDialog.setCancelable(mIsCancelable);
+
+        if (mDialog != null) {
+            if (!isDialogShowing()) {
+                mDialog.show();
+            }
+        }
+    }
+
+
+//      public void showCreateGroup(Context mContext, boolean mIsCancelable) {
+//
+//        mDialog = new Dialog(mContext, R.style.dialogStyle);
+//        //  @SuppressLint("InflateParams")
+//        //  View view = LayoutInflater.from(mContext).inflate(R.layout.custom_dialog_alert, null, false);
+//        mDialog.setContentView(R.layout.custom_dialog_create_group);
+//
+//         /* Set Dialog width match parent */
+//        mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        mDialog.getWindow().getAttributes().windowAnimations = R.style.animationdialog;
+//        //mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//
+//        TextView mDialogTitle = (TextView) mDialog.findViewById(R.id.tv_dialogHeader);
+//        mDialogTitle.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//
+//        final EditText edtEnterOffer = (EditText) mDialog.findViewById(R.id.edt_groupName);
+//        //TextView tvOk = (TextView) mDialog.findViewById(R.id.tv_ok);
+//        edtEnterOffer.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//
+////        Button btnCancel = (Button) mDialog.findViewById(R.id.btn_actionCancel);
+////        btnCancel.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//
+//        final Button btnOk = (Button) mDialog.findViewById(R.id.btn_createGroup);
+//        btnOk.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//        btnOk.setTag(edtEnterOffer.getText().toString().trim());
+//
+//        edtEnterOffer.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                btnOk.setTag(edtEnterOffer.getText().toString().trim());
+//            }
+//        });
+//
+//
+//        /*btnCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dismiss();
+//            }
+//        });*/
+//        mDialog.setCancelable(mIsCancelable);
+//
+//        if (mDialog != null) {
+//            if (!isDialogShowing()) {
+//                mDialog.show();
+//            }
+//        }
+//    }
 
     /**
      * This method open Date picker dialog to select Date.
@@ -120,7 +253,8 @@ public class CustomDialog {
      * @param month                 (int)     : month e.g. 9
      * @param day                   (int)     : day   e.g. 20
      */
-    public void showDatePickerDialog(final Context context, final TextView textView, final CalenderDateSelection calenderDateSelection, int year, int month, int day) {
+    public void showDatePickerDialog(final Context context, final TextView textView, final CalenderDateSelection calenderDateSelection,
+                                     int year, int month, int day) {
 
         final Calendar mCurrentDate = Calendar.getInstance();
 
@@ -130,19 +264,20 @@ public class CustomDialog {
         int mMonth = mCurrentDate.get(Calendar.MONTH);
         int mDay = mCurrentDate.get(Calendar.DAY_OF_MONTH);
 
-        final DatePickerDialog mDatePicker = new DatePickerDialog(context, R.style.DatePickerDialogTheme, new DatePickerDialog.OnDateSetListener() {
-            public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+        final DatePickerDialog mDatePicker = new DatePickerDialog(context, R.style.DatePickerDialogTheme,
+                new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
 
-                mSelectedYear = selectedyear;
-                mSelectedMonth = selectedmonth;
-                mSelectedDay = selectedday;
+                        mSelectedYear = selectedyear;
+                        mSelectedMonth = selectedmonth;
+                        mSelectedDay = selectedday;
 
-                mCurrentDate.set(mSelectedYear, mSelectedMonth, mSelectedDay);
-                textView.setText(Utils.dateFormat(mCurrentDate.getTimeInMillis(), Constants.DATE_MM_DD_YYYY));
+                        mCurrentDate.set(mSelectedYear, mSelectedMonth, mSelectedDay);
+                        textView.setText(Utils.dateFormat(mCurrentDate.getTimeInMillis(), Constants.DATE_MM_DD_YYYY));
                 /* it is used to pass selected Date in millisecond*/
-                textView.setTag(mCurrentDate.getTimeInMillis());
-            }
-        }, mYear, mMonth, mDay);
+                        textView.setTag(mCurrentDate.getTimeInMillis());
+                    }
+                }, mYear, mMonth, mDay);
 
 
         switch (calenderDateSelection) {
@@ -250,29 +385,102 @@ public class CustomDialog {
         }
     }
 
+//    public void showAllHelpOffers(Context mContext, boolean mIsCancelable, ArrayList<AllHelpOfferModel> allHelpOfferList) {
+//
+//        mDialog = new Dialog(mContext, R.style.dialogStyle);
+//        // @SuppressLint("InflateParams")
+//        // View view = LayoutInflater.from(mContext).inflate(R.layout.custom_dialog_action_dialog, null, false);
+//        mDialog.setContentView(R.layout.custom_dialog_all_help_offers);
+//
+//        /* Set Dialog width match parent */
+//        mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//
+//        // mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//        mDialog.setCancelable(mIsCancelable);
+//
+//        TextView tvTitle = (TextView) mDialog.findViewById(R.id.tv_dialogHeader);
+//        tvTitle.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
+//
+//        TextView tvAmount = (TextView) mDialog.findViewById(R.id.tv_amount);
+//        tvAmount.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
+//
+//        TextView tvDate = (TextView) mDialog.findViewById(R.id.tv_dateTime);
+//        tvDate.setTypeface(MyApplication.getInstance().FONT_WORKSANS_MEDIUM);
+//
+//        ImageView imgClose = (ImageView) mDialog.findViewById(R.id.img_close);
+//
+//        RecyclerView recyclerView = (RecyclerView) mDialog.findViewById(R.id.recyclerView_allOffers);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+//        recyclerView.setAdapter(new AdpAllHelpOffers(mContext, allHelpOfferList));
+//
+//        imgClose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dismiss();
+//            }
+//        });
+//        try {
+//            if (mDialog != null) {
+//                if (!isDialogShowing()) {
+//                    mDialog.show();
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-
-
-
-    public void ShowTimePickerDialog(Context context, final TextView textView) {
+    public void showTimePickerDialog(Context context, final TextView textView, final int timeFormat) {
 
         Calendar mCurrentTime = Calendar.getInstance();
 
         final int[] hour = new int[1];
         final int[] minute = new int[1];
+        final int[] seconds = new int[1];
 
         hour[0] = mCurrentTime.get(Calendar.HOUR);
         minute[0] = mCurrentTime.get(Calendar.MINUTE);
+        seconds[0] = mCurrentTime.get(Calendar.SECOND);
 
-        final TimePickerDialog mTimePicker = new TimePickerDialog(context, R.style.DatePickerDialogTheme,new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+        final TimePickerDialog mTimePicker = new TimePickerDialog(context, R.style.DatePickerDialogTheme,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
-                hour[0] = selectedHour;
-                minute[0] = selectedMinute;
-                textView.setText(String.format("%02d:%02d", hour[0], minute[0]));
-            }
-        }, hour[0], minute[0], false);//Yes 24 hour time
+                        //hour[0] = selectedHour;
+                        //minute[0] = selectedMinute;
+
+                        if (timeFormat == 1) {
+                            try {
+                                SimpleDateFormat format = new SimpleDateFormat("hh:mm");
+
+                                Date Date1 = format.parse(hour[0] + ":" + minute[0]);
+                                Date Date2 = format.parse(selectedHour + ":" + selectedMinute);
+                                long mills = Date2.getTime() - Date1.getTime();
+
+                                //Debug.trace("currentTime", "" +);
+
+                                int diffHours = (int) (mills / (1000 * 60 * 60));
+                                int diffMinutes = (int) (mills % (1000 * 60 * 60));
+                                if (mills < 0) {
+                                    ToastHelper.getInstance().showMessage("select valid hours");
+                                } else {
+                                    textView.setText(String.valueOf(diffHours));
+                                }
+
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (timeFormat == 2) {
+                            hour[0] = selectedHour;
+                            minute[0] = selectedMinute;
+
+                            textView.setText(String.format("%02d:%02d:%02d", hour[0], minute[0], seconds[0]));
+                        }
+
+
+                    }
+                }, hour[0], minute[0], false);//Yes 24 hour time
 
         // mTimePicker.setTitle("Select Time");
 
@@ -307,8 +515,6 @@ public class CustomDialog {
             e.printStackTrace();
         }
     }
-
-
 
 
     public void dismiss() {
