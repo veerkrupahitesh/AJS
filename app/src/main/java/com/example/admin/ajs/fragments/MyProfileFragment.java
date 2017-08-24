@@ -249,7 +249,7 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
                     edtEmail.setText(loginUserObject.getEmailId());
 //                    edtPassword.setText(loginUserObject.getPassword());
                     edtTelephone.setText(loginUserObject.getMobileNo());
-
+                   //tvBalanceAmount.setText(loginUserModel.getBalanceTender());
                     edtPostalCode.setText(loginUserObject.getPOBox());
 
                 }

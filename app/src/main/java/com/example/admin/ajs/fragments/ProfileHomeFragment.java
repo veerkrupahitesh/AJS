@@ -137,6 +137,10 @@ public class ProfileHomeFragment extends Fragment implements OnClickEvent, OnBac
 //                        profileActivity.finish();
 //                    }
 //                break;
+            case R.id.tv_balance:
+                homeActivity.pushFragment(new BalanceAmountFragment(), true, false, null);
+                break;
+
         }
         }
 }

@@ -82,7 +82,7 @@ public class LoginUserModel implements Serializable {
     private String endDate;
     @SerializedName("BalanceTender")
     @Expose
-    private String balanceTender;
+    private int balanceTender;
 
 
     private final static long serialVersionUID = 7295017410248278913L;
@@ -271,11 +271,11 @@ public class LoginUserModel implements Serializable {
         this.endDate = endDate;
     }
 
-    public String getBalanceTender() {
+    public int getBalanceTender() {
         return balanceTender;
     }
 
-    public void setBalanceTender(String balanceTender) {
+    public void setBalanceTender(int balanceTender) {
         this.balanceTender = balanceTender;
     }
 }
