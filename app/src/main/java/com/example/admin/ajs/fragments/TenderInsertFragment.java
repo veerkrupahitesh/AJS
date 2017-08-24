@@ -143,7 +143,7 @@ public class TenderInsertFragment extends Fragment implements OnClickEvent, Data
 
         if (TenderNo.isEmpty()) {
             edtTenderNo.requestFocus();
-            edtTenderNo.setError("Enter Tender NO");
+            ToastHelper.getInstance().showMessage("Enter Tender No");
             return;
         }
 

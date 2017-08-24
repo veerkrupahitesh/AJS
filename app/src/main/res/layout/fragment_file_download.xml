@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <!--<include layout="@layout/header" />-->
 
@@ -11,7 +12,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:src="@drawable/img_logo_login" />
 
     <TextView
@@ -28,10 +28,12 @@
 
     <TextView
         android:id="@+id/txv_file_date"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/drw_edittext_bg"
         android:freezesText="true"
         android:gravity="center"
@@ -50,11 +52,12 @@
         android:id="@+id/btn_file_download"
         style="@style/buttonStyle"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:onClick="onClick"
+        android:textSize="12sp"
         android:text="@string/str_download_pdf"
         android:textColor="@android:color/white" />
 

@@ -28,7 +28,8 @@ public class Constants {
 //    public static final int DEFAULT_CALENDER_MONTH = 1;
 //    public static final int DEFAULT_CALENDER_DATE = 1;
 
-    public static final int PHONE_LENGTH = 10;
 
+    public static final int PHONE_LENGTH = 10;
+    public static final int PINCODE_LENGTH = 6;
     public static final String IS_FROM_HOME_ACTIVITY = "homeActivity";
 }

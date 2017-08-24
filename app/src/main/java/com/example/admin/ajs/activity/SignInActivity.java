@@ -133,11 +133,11 @@ public class SignInActivity extends AppCompatActivity implements OnClickEvent, D
 
         if (username.isEmpty()) {
             edtUserName.requestFocus();
-            edtUserName.setError("Enter Username");
+            ToastHelper.getInstance().showMessage("Enter Username");
             return false;
         } else if (password.isEmpty()) {
             edtPassword.requestFocus();
-            edtPassword.setError("Enter Password");
+            ToastHelper.getInstance().showMessage("Enter Password");
             return false;
         } else {
             return true;

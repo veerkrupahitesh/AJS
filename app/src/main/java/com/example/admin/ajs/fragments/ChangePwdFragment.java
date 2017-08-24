@@ -144,19 +144,19 @@ public class ChangePwdFragment extends Fragment implements OnClickEvent, DataObs
 
         if (OldPwd.isEmpty()) {
             edtOldPwd.requestFocus();
-            edtOldPwd.setError("Enter OldPassWord");
+            ToastHelper.getInstance().showMessage("Enter OldPassWord");
             return;
         }
 
         if (NewPwd.isEmpty()) {
             edtNewPwd.requestFocus();
-            edtNewPwd.setError("Enter NewPassWord");
+            ToastHelper.getInstance().showMessage("Enter NewPassWord");
             return;
         }
 
         if (ConfirmPwd.isEmpty()) {
             edtConfirmPwd.requestFocus();
-            edtConfirmPwd.setError("Enter Re-EnterPassWord");
+            ToastHelper.getInstance().showMessage("Enter Re-EnterPassWord");
             return;
         }
 
@@ -169,7 +169,7 @@ public class ChangePwdFragment extends Fragment implements OnClickEvent, DataObs
         if (!OldPwd.equals(loginUserObject.getPassword())) {
 
             edtOldPwd.requestFocus();
-            edtOldPwd.setError("Old password is invalid");
+            ToastHelper.getInstance().showMessage("Old password is invalid");
             return;
         }
         try {

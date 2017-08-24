@@ -138,39 +138,39 @@ public class SignUpActivity extends AppCompatActivity implements OnClickEvent,Da
 
         if (mFristName.isEmpty()) {
             edtFristName.requestFocus();
-            edtFristName.setError("Enter Frist Name");
+            ToastHelper.getInstance().showMessage("Enter Frist Name");
             return false;
         } else if (mLastName.isEmpty()) {
             edtLastName.requestFocus();
-            edtLastName.setError("Enter Last Name");
+            ToastHelper.getInstance().showMessage("Enter Last Name");
             return false;
         } else if (mCompanyName.isEmpty()) {
             edtCompanyName.requestFocus();
-            edtCompanyName.setError("Enter Company Name");
+            ToastHelper.getInstance().showMessage("Enter Company Name");
             return false;
         } else if (mEmailAddress.isEmpty()) {
             edtEmail.requestFocus();
-            edtEmail.setError("Enter email address");
+            ToastHelper.getInstance().showMessage("Enter email address");
             return false;
         } else if (!mEmailAddress.matches(Patterns.EMAIL_ADDRESS.pattern())) {
             edtEmail.requestFocus();
-            edtEmail.setError("Enter valid email address");
+            ToastHelper.getInstance().showMessage("Enter valid email address");
             return false;
         } else if (phoneNumber.isEmpty()) {
             edtPhone.requestFocus();
-            edtPhone.setError("Enter phone number");
+            ToastHelper.getInstance().showMessage("Enter phone number");
             return false;
         } else if (phoneNumber.length() != Constants.PHONE_LENGTH) {
             edtPhone.requestFocus();
-            edtPhone.setError("Enter valid phone number");
+            ToastHelper.getInstance().showMessage("Enter valid phone number");
             return false;
         } else if (mUserName.isEmpty()) {
             edtUserName.requestFocus();
-            edtUserName.setError("Enter Username");
+            ToastHelper.getInstance().showMessage("Enter Username");
             return false;
         } else if (mPassword.isEmpty()) {
             edtPassword.requestFocus();
-            edtPassword.setError("Enter password");
+            ToastHelper.getInstance().showMessage("Enter password");
             return false;
         } else {        return true;
         }

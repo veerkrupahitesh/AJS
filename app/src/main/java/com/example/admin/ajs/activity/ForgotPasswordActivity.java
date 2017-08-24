@@ -43,7 +43,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //
         setContentView(R.layout.activity_forgot_password);
         init();
         Utils.setupOutSideTouchHideKeyboard(findViewById(R.id.parentView));
@@ -65,9 +65,6 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
         editUserName = (EditText) findViewById(R.id.edt_userName);
         editUserName.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
 
-        //ParentView = (LinearLayout) findViewById(R.id.parentView);
-
-       // Utils.setupOutSideTouchHideKeyboard(ParentView);
     }
 
     @Override
@@ -101,7 +98,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements OnClick
 
         if (userNmae.isEmpty()) {
             editUserName.requestFocus();
-            editUserName.setError("Enter User Name");
+            ToastHelper.getInstance().showMessage("Enter User Name");
             return false;
 
         } else {return true;

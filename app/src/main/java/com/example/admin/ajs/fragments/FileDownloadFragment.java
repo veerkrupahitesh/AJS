@@ -2,8 +2,6 @@ package com.example.admin.ajs.fragments;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,14 +46,11 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static android.content.Context.MODE_PRIVATE;
 import static com.example.admin.ajs.R.id.btn_file_download;
 
 /**
@@ -67,7 +61,7 @@ public class FileDownloadFragment extends Fragment implements OnClickEvent, Data
 
     private HomeActivity HomeActivity;
     LoginUserModel loginUserObject;
-   // private Bundle bundle;
+    // private Bundle bundle;
     private View rootView;
     private TextView tvFileDate;
     private DatePickerDialog dialog;
@@ -76,8 +70,6 @@ public class FileDownloadFragment extends Fragment implements OnClickEvent, Data
     private int mMonth = mCurrentDate.get(Calendar.MONTH);
     private int mDay = mCurrentDate.get(Calendar.DAY_OF_MONTH);
     private String Filedate;
-
-    // InputStreamVolleyRequest request;
     int count;
     //String mUrl = "http://books.sonatype.com/mvnref-book/pdf/mvnref-pdf.pdf";
 
@@ -92,7 +84,7 @@ public class FileDownloadFragment extends Fragment implements OnClickEvent, Data
         //profileActivity = (ProfileActivity) getActivity();
         HomeActivity = (HomeActivity) getActivity();
 
-      //  bundle = getArguments();
+        //  bundle = getArguments();
     }
 
     @Nullable
@@ -253,7 +245,7 @@ public class FileDownloadFragment extends Fragment implements OnClickEvent, Data
 
                                 output.close();
                                 input.close();
-                                // Toast.makeText(this, "Download complete.", Toast.LENGTH_LONG).show();
+
                                 Toast.makeText(getContext(), "Download complete",
                                         Toast.LENGTH_LONG).show();
                             }
@@ -280,10 +272,6 @@ public class FileDownloadFragment extends Fragment implements OnClickEvent, Data
         RequestQueue mRequestQueue = Volley.newRequestQueue(getContext(), new HurlStack());
         mRequestQueue.add(request);
 
-
-    }
-
-    private void downloadfile(String file) {
 
     }
 

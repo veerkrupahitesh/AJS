@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Telephone"
                         android:inputType="phone"
-                        android:maxLength="15"
+                        android:maxLength="10"
                         android:maxLines="1" />
                 </android.support.design.widget.TextInputLayout>
 

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Debug {
 
     private static final String TAG = "tag";
-    private static final String LOG_FILE_NAME = "/AniVetHub.txt";
+    private static final String LOG_FILE_NAME = "/AJS.txt";
     private static boolean isDebug = true;
     private static boolean isPersistant = true;
 

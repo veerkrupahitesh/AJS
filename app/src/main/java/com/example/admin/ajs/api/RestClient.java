@@ -64,7 +64,7 @@ public class RestClient {
 
 
                 if (isDialogRequired) {
-                    CustomDialog.getInstance().showProgress(mContext, mContext.getString(R.string.str_please_wait), false);
+                    CustomDialog.getInstance().showProgress(mContext,  mContext.getString(R.string.str_please_wait), false);
                 }
 
                 String postUrl = getAbsoluteUrl(url);
@@ -150,7 +150,6 @@ public class RestClient {
                 MyApplication.getInstance().addToRequestQueue(mPostRequest, mContext.getClass().getSimpleName());
 
             } else {
-
                 CustomDialog.getInstance().showAlert(mContext, mContext.getString(R.string.str_no_internet_connection_available), true);
             }
         } catch (Exception e) {

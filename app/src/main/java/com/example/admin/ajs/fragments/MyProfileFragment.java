@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,7 @@ import com.example.admin.ajs.helper.ToastHelper;
 import com.example.admin.ajs.listener.OnBackPressedEvent;
 import com.example.admin.ajs.listener.OnClickEvent;
 import com.example.admin.ajs.model.LoginUserModel;
+import com.example.admin.ajs.utility.Constants;
 import com.example.admin.ajs.utility.Utils;
 
 import java.util.ArrayList;
@@ -153,31 +156,51 @@ public class MyProfileFragment extends Fragment implements OnBackPressedEvent, O
         poBox = edtPostalCode.getText().toString().trim();
 
         if (firstName.isEmpty()) {
-            edtFirstName.setError("First name can not be empty");
+            ToastHelper.getInstance().showMessage("First name can not be empty");
             return false;
         } else if (lastName.isEmpty()) {
-            edtLastName.setError("Last name can not be empty");
+            ToastHelper.getInstance().showMessage("Last name can not be empty");
             return false;
         } else if (emailId.isEmpty()) {
-            edtEmail.setError("Email address can not be empty");
+            ToastHelper.getInstance().showMessage("Email address can not be empty");
+            return false;
+        }else if (emailId.length() > 0 && !emailId.matches(Patterns.EMAIL_ADDRESS.pattern())) {
+            edtEmail.requestFocus();
+            // if (!vetEmailId.matches(Patterns.EMAIL_ADDRESS.pattern())) {
+            ToastHelper.getInstance().showMessage(getString(R.string.str_enter_valid_email_address));
             return false;
 //        } else if (password.isEmpty()) {
 //            edtPassword.setError("Password can not be empty");
 //            return false;
 
         } else if (companyName.isEmpty()) {
-            edtCompanyName.setError("CompanyName can not be empty");
+            ToastHelper.getInstance().showMessage("CompanyName can not be empty");
         return false;
         }
         else if (mobileNo.isEmpty()) {
             edtTelephone.setError("MobileNo can not be empty");
             return false;
+        } else if (mobileNo.length() > 0 && mobileNo.length() < Constants.PHONE_LENGTH) {
+            edtTelephone.requestFocus();
+                // if (vetContactNo.length() < Constants.PHONE_LENGTH) {
+                ToastHelper.getInstance().showMessage(getString(R.string.str_enter_valid_phoneno));
+                return false;
+                //  } else {
+                //      return true;
+                //  }
 
+            } else if (mobileNo.length() > 0 && !TextUtils.isDigitsOnly(mobileNo)) {
+            edtTelephone.requestFocus();
+                ToastHelper.getInstance().showMessage(getString(R.string.str_enter_valid_phoneno));
+                return false;
         }
         else if (poBox.isEmpty()) {
-            edtPostalCode.setError("poBox can not be empty");
+            ToastHelper.getInstance().showMessage("poBox can not be empty");
             return false;
-
+        }else if (poBox.length() < Constants.PINCODE_LENGTH) {
+            edtPostalCode.requestFocus();
+                ToastHelper.getInstance().showMessage(getString(R.string.str_enter_valid_pincode));
+                return false;
         }
         else {
 
