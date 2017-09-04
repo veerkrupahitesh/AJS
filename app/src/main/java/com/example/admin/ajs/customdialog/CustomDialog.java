@@ -341,49 +341,49 @@ public class CustomDialog {
 
     }
 
-    public void showActionDialog(Context mContext, String mTitle, String messaage, boolean mIsCancelable) {
-
-        mDialog = new Dialog(mContext, R.style.dialogStyle);
-        // @SuppressLint("InflateParams")
-        // View view = LayoutInflater.from(mContext).inflate(R.layout.custom_dialog_action_dialog, null, false);
-        mDialog.setContentView(R.layout.custom_dialog_action_dialog);
-
-        /* Set Dialog width match parent */
-        mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        // mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        mDialog.setCancelable(mIsCancelable);
-
-        TextView tvTitle = (TextView) mDialog.findViewById(R.id.tv_actionTitle);
-        tvTitle.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
-        tvTitle.setText(mTitle);
-
-        TextView tvMessage = (TextView) mDialog.findViewById(R.id.tv_actionMessage);
-        tvMessage.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
-        tvMessage.setText(messaage);
-
-        TextView tvOK = (TextView) mDialog.findViewById(R.id.btn_actionOk);
-        tvOK.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
-
-        TextView tvCancel = (TextView) mDialog.findViewById(R.id.btn_actionCancel);
-        tvCancel.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
-
-        tvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        try {
-            if (mDialog != null) {
-                if (!isDialogShowing()) {
-                    mDialog.show();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void showActionDialog(Context mContext, String mTitle, String messaage, boolean mIsCancelable) {
+//
+//        mDialog = new Dialog(mContext, R.style.dialogStyle);
+//        // @SuppressLint("InflateParams")
+//        // View view = LayoutInflater.from(mContext).inflate(R.layout.custom_dialog_action_dialog, null, false);
+//        mDialog.setContentView(R.layout.custom_dialog_action_dialog);
+//
+//        /* Set Dialog width match parent */
+//        mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//
+//        // mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//        mDialog.setCancelable(mIsCancelable);
+//
+//        TextView tvTitle = (TextView) mDialog.findViewById(R.id.tv_actionTitle);
+//        tvTitle.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//        tvTitle.setText(mTitle);
+//
+//        TextView tvMessage = (TextView) mDialog.findViewById(R.id.tv_actionMessage);
+//        tvMessage.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//        tvMessage.setText(messaage);
+//
+//        TextView tvOK = (TextView) mDialog.findViewById(R.id.btn_actionOk);
+//        tvOK.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//
+//        TextView tvCancel = (TextView) mDialog.findViewById(R.id.btn_actionCancel);
+//        tvCancel.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//
+//        tvCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dismiss();
+//            }
+//        });
+//        try {
+//            if (mDialog != null) {
+//                if (!isDialogShowing()) {
+//                    mDialog.show();
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 //    public void showAllHelpOffers(Context mContext, boolean mIsCancelable, ArrayList<AllHelpOfferModel> allHelpOfferList) {
 //
