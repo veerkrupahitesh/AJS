@@ -3,12 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/content_header" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center">
-
-    <!--<include layout="@layout/header" />-->
-
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,6 +63,6 @@
         android:textSize="12sp"
         android:text="@string/str_download_pdf"
         android:textColor="@android:color/white" />
-
+</LinearLayout>
 
 </LinearLayout>

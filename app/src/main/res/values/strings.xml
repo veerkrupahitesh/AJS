@@ -131,4 +131,5 @@
     <string name="str_enter_valid_pincode">Please Enter Valid Pincode</string>
     <string name="str_enter_valid_phoneno">Please enter valid phone number</string>
     <string name="str_enter_valid_email_address">Please enter valid email address</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

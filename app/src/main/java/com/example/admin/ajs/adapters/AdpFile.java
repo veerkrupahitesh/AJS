@@ -37,8 +37,6 @@ public class AdpFile extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
         return new MyViewHolder(view);
     }
 
-
-
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 

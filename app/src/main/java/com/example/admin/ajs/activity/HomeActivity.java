@@ -35,6 +35,7 @@ import com.example.admin.ajs.fragments.TenderInsertFragment;
 import com.example.admin.ajs.listener.OnBackPressedEvent;
 import com.example.admin.ajs.listener.OnClickEvent;
 import com.example.admin.ajs.utility.PermissionClass;
+import com.example.admin.ajs.utility.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +95,9 @@ public class HomeActivity extends AppCompatActivity implements OnClickEvent, OnB
                     }
                     return true;
                 case R.id.navigation_file_download:
-                   // mTextMessage.setText(R.string.title_notifications);
+//                    Intent intent1 = new Intent(getApplicationContext(), MapsActivity.class);
+//                startActivity(intent1);
+//                break;
                     if (!(currentFragment instanceof FileDownloadFragment)) {
                         removeAllFragment();
                         pushFragment(new FileDownloadFragment(), true, false, null);
@@ -164,10 +167,10 @@ public class HomeActivity extends AppCompatActivity implements OnClickEvent, OnB
 //                }
 //                break;
 ////
-//            case R.id.lin_tender_insert:
+//            case R.id.navigation_file_download:
 //
 //                Utils.buttonClickEffect(view);
-//                Intent intent1 = new Intent(this, MainActivity.class);
+//                Intent intent1 = new Intent(this, MapsActivity.class);
 //                startActivity(intent1);
 //                break;
         }

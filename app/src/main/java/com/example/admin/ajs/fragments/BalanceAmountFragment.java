@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.example.admin.ajs.MyApplication;
+
 import com.example.admin.ajs.R;
 import com.example.admin.ajs.activity.HomeActivity;
 import com.example.admin.ajs.api.ApiList;
@@ -117,6 +118,8 @@ public class BalanceAmountFragment extends Fragment implements OnClickEvent, Dat
     public void onBackPressed() {
         homeActivity.popBackFragment();
     }
+    //
+
 
     @Override
     public void onClick(View view) {
