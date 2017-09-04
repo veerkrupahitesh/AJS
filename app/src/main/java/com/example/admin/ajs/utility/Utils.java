@@ -412,12 +412,12 @@ public class Utils {
 //        return output;
 //    }
 
-    public static void setTypeFace(MenuItem menuItem, Typeface typeface) {
-
-        SpannableString mNewTitle = new SpannableString(menuItem.getTitle());
-        mNewTitle.setSpan(new CustomTypefaceSpan("", typeface), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        menuItem.setTitle(mNewTitle);
-    }
+//    public static void setTypeFace(MenuItem menuItem, Typeface typeface) {
+//
+//        SpannableString mNewTitle = new SpannableString(menuItem.getTitle());
+//        mNewTitle.setSpan(new CustomTypefaceSpan("", typeface), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+//        menuItem.setTitle(mNewTitle);
+//    }
 
 
 

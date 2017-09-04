@@ -30,10 +30,10 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="animationdialog">
-        <item name="@android:windowEnterAnimation">@anim/dialog_in</item>
-        <item name="@android:windowExitAnimation">@anim/dialog_out</item>
-    </style>
+    <!--<style name="animationdialog">-->
+        <!--<item name="@android:windowEnterAnimation">@anim/dialog_in</item>-->
+        <!--<item name="@android:windowExitAnimation">@anim/dialog_out</item>-->
+    <!--</style>-->
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

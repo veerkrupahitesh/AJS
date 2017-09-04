@@ -95,7 +95,7 @@ public class CustomDialog {
 
          /* Set Dialog width match parent */
         mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        mDialog.getWindow().getAttributes().windowAnimations = R.style.animationdialog;
+       // mDialog.getWindow().getAttributes().windowAnimations = R.style.animationdialog;
         //mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
         TextView mDialogTitle = (TextView) mDialog.findViewById(R.id.tv_alert);
@@ -120,65 +120,65 @@ public class CustomDialog {
         }
     }
 
-    public void showEnterOffer(Context mContext, boolean mIsCancelable,String title) {
-
-        mDialog = new Dialog(mContext, R.style.dialogStyle);
-        //  @SuppressLint("InflateParams")
-        //  View view = LayoutInflater.from(mContext).inflate(R.layout.custom_dialog_alert, null, false);
-        mDialog.setContentView(R.layout.custom_dialog_enter_offer);
-
-         /* Set Dialog width match parent */
-        mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        mDialog.getWindow().getAttributes().windowAnimations = R.style.animationdialog;
-        //mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-        TextView mDialogTitle = (TextView) mDialog.findViewById(R.id.tv_enter_offer);
-        mDialogTitle.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
-        mDialogTitle.setText(title);
-
-        final EditText edtEnterOffer = (EditText) mDialog.findViewById(R.id.edt_enter_offer);
-        //TextView tvOk = (TextView) mDialog.findViewById(R.id.tv_ok);
-        edtEnterOffer.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
-
-        Button btnCancel = (Button) mDialog.findViewById(R.id.btn_actionCancel);
-        btnCancel.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
-
-        final Button btnOk = (Button) mDialog.findViewById(R.id.btn_actionOk);
-        btnOk.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
-        btnOk.setTag(edtEnterOffer.getText().toString().trim());
-
-        edtEnterOffer.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                btnOk.setTag(edtEnterOffer.getText().toString().trim());
-            }
-        });
-
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        mDialog.setCancelable(mIsCancelable);
-
-        if (mDialog != null) {
-            if (!isDialogShowing()) {
-                mDialog.show();
-            }
-        }
-    }
+//    public void showEnterOffer(Context mContext, boolean mIsCancelable,String title) {
+//
+//        mDialog = new Dialog(mContext, R.style.dialogStyle);
+//        //  @SuppressLint("InflateParams")
+//        //  View view = LayoutInflater.from(mContext).inflate(R.layout.custom_dialog_alert, null, false);
+//        mDialog.setContentView(R.layout.custom_dialog_enter_offer);
+//
+//         /* Set Dialog width match parent */
+//        mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        mDialog.getWindow().getAttributes().windowAnimations = R.style.animationdialog;
+//        //mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//
+//        TextView mDialogTitle = (TextView) mDialog.findViewById(R.id.tv_enter_offer);
+//        mDialogTitle.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//        mDialogTitle.setText(title);
+//
+//        final EditText edtEnterOffer = (EditText) mDialog.findViewById(R.id.edt_enter_offer);
+//        //TextView tvOk = (TextView) mDialog.findViewById(R.id.tv_ok);
+//        edtEnterOffer.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//
+//        Button btnCancel = (Button) mDialog.findViewById(R.id.btn_actionCancel);
+//        btnCancel.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//
+//        final Button btnOk = (Button) mDialog.findViewById(R.id.btn_actionOk);
+//        btnOk.setTypeface(MyApplication.getInstance().FONT_WORKSANS_REGULAR);
+//        btnOk.setTag(edtEnterOffer.getText().toString().trim());
+//
+//        edtEnterOffer.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                btnOk.setTag(edtEnterOffer.getText().toString().trim());
+//            }
+//        });
+//
+//
+//        btnCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dismiss();
+//            }
+//        });
+//        mDialog.setCancelable(mIsCancelable);
+//
+//        if (mDialog != null) {
+//            if (!isDialogShowing()) {
+//                mDialog.show();
+//            }
+//        }
+//    }
 
 
 //      public void showCreateGroup(Context mContext, boolean mIsCancelable) {
