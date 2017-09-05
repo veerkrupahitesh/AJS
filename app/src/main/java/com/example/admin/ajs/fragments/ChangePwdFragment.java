@@ -138,19 +138,19 @@ public class ChangePwdFragment extends Fragment implements OnClickEvent, DataObs
 
     private void ClientChangePassword() {
 
-        String OldPwd = edtOldPwd.getText().toString();
-        String NewPwd = edtNewPwd.getText().toString();
-        String ConfirmPwd = edtConfirmPwd.getText().toString();
+        String OldPwd = edtOldPwd.getText().toString().trim();
+        String NewPwd = edtNewPwd.getText().toString().trim();
+        String ConfirmPwd = edtConfirmPwd.getText().toString().trim();
 
         if (OldPwd.isEmpty()) {
             edtOldPwd.requestFocus();
-            ToastHelper.getInstance().showMessage("Enter OldPassWord");
+            ToastHelper.getInstance().showMessage("Enter Old PassWord");
             return;
         }
 
         if (NewPwd.isEmpty()) {
             edtNewPwd.requestFocus();
-            ToastHelper.getInstance().showMessage("Enter NewPassWord");
+            ToastHelper.getInstance().showMessage("Enter New PassWord");
             return;
         }
 
